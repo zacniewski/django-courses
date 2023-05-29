@@ -16,13 +16,83 @@
     pip install -r requirements.txt
     python manage.py runserver
     ```
-  - the `frontend part` part (run in the second console):  
-
+    
+  - a structure of the `backend` part:  
+    ```bash
+    backend/
+    ├── backend
+    │   ├── asgi.py
+    │   ├── __init__.py
+    │   ├── settings.py
+    │   ├── urls.py
+    │   └── wsgi.py
+    ├── courses
+    │   ├── admin.py
+    │   ├── apps.py
+    │   ├── fixtures
+    │   │   └── course.json
+    │   ├── __init__.py
+    │   ├── migrations
+    │   │   ├── 0001_initial.py
+    │   │   └── __init__.py
+    │   ├── models.py
+    │   ├── serializers.py
+    │   ├── tests.py
+    │   ├── urls.py
+    │   └── views.py
+    ├── db.sqlite3
+    ├── Dockerfile
+    ├── manage.py
+    └── requirements.txt
+    ```
+  - the `frontend part` part (run in the second console):
     ```bash
     cd frontend
     npm install
     npm start
     ```
+  - a structure of the `frontend` part:  
+      ```bash
+        frontend/
+    ├── babelrc.json
+    ├── Dockerfile
+    ├── jest.config.js
+    ├── package.json
+    ├── package-lock.json
+    ├── public
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── README.md
+    ├── src
+    │   ├── App.css
+    │   ├── App.js
+    │   ├── App.test.js
+    │   ├── components
+    │   │   ├── AboutComponent.js
+    │   │   ├── AddCourseComponent.js
+    │   │   ├── CourseComponent.js
+    │   │   └── CoursesListComponent.js
+    │   ├── index.css
+    │   ├── index.js
+    │   ├── reportWebVitals.js
+    │   ├── services
+    │   │   └── CourseService.js
+    │   ├── serviceWorker.js
+    │   ├── setupTests.js
+    │   └── utils
+    │       ├── HttpAxios.js
+    │       └── WithRouter.js
+    └── test
+        └── jest
+            └── __mocks__
+                └── styleMock.js
+    
+        ```
+
   - the browser should open with the url http://localhost:8081/courses with the following view:  
   ![start](assets/start.png)
 
