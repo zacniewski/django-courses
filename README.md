@@ -91,7 +91,7 @@
             └── __mocks__
                 └── styleMock.js
     
-        ```
+      ```
 
   - the browser should open with the url http://localhost:8081/courses with the following view:  
   ![start](assets/start.png)
