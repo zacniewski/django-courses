@@ -57,7 +57,7 @@ export default class About extends Component {
                 <li className="list-group-item d-flex justify-content-between align-items-start">
                     <div className="ms-2 me-auto">
                         <div className="fw-bold">Repository</div>
-                        Link to <a href={"https://github.com/zacniewski/"}>Github</a>
+                        Link to <a href={"https://github.com/zacniewski/django-courses"}>Github</a>
                     </div>
                 </li>
             </ol>
