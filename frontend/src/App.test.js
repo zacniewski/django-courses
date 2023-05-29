@@ -1,4 +1,4 @@
-describe('true is truthy and false is falsy', () => {
+describe('Basic test of React Testing Library', () => {
  test('true is truthy', () => {
    expect(true).toBe(true);
  });
