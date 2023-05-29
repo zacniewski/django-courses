@@ -39,11 +39,11 @@
 
 3. Browsing and editing courses
 - navigation looks as follows:  
-![navigation](assets/navigation.png)
+![navigation](assets/navigation.png)  
 - after clicking one of the courses we can get detailed information about it:  
 ![course](assets/course.png)
-- we can edit some parameters of the course after clicking `Edit course` button:
-![course](assets/course-edition.png)
+- we can edit some parameters of the course after clicking `Edit course` button:  
+![course](assets/course-edition.png)  
 
 4. Adding new courses
 - after clicking `Add course` link in the top left part of the page, we can add new course:    
@@ -57,7 +57,13 @@
 - after clicking `About` link in the navigation menu, we can see some information about the project:  
 ![about](assets/about.png)
 
-6. Fixtures
+6. Searching through the courses
+- you can look for a given phrase in the titles of courses: 
+![search-1](assets/search-1.png)
+- after clicking `Search` button, as a result you'll get the list of courses with given phrase:  
+![search-2](assets/search-2.png)
+
+7. Fixtures
 - if you'd like to manipulate some backend data, you can use fixture from `.json` file,
 - it's already created in `backend/courses/fixtures/course.json` file,
 - to create, use:  
@@ -69,10 +75,9 @@
     python manage.py loaddata courses/fixtures/course.json --app courses.Course 
      ```
   
-7. Tests  
+8. Tests  
   - the `backend` part was tested with built-in `unittest` module:  
 ![backend-test](assets/backend-test.png)
 
   - the `frontend` part was tested with React Testing Library::  
 ![frontend-test](assets/frontend-test.png)  
-
