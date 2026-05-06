@@ -1,153 +1,219 @@
-**Django Courses by Artur**
+# 🎓 Django Courses Management System
 
-1. Clone the repository. 
-    ```bash
-    git clone git@github.com:zacniewski/django-courses.git
-    cd django-courses/
-    ```  
+A full-stack web application for managing educational courses, built with **Django REST Framework** (Backend) and **React** (Frontend).
 
-2. Running the project (without using Docker)  
-  - the `backend` part (run in the first console):  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Django](https://img.shields.io/badge/Django-4.2+-092e20?style=flat&logo=django)](https://www.djangoproject.com/)
+[![React](https://img.shields.io/badge/React-18+-61dafb?style=flat&logo=react)](https://reactjs.org/)
 
-    ```bash
-    cd backend
-    python3 -m venv my_env
-    source my_env/bin/activate
-    pip install -r requirements.txt
-    python manage.py runserver
-    ```
-    
-  - a structure of the `backend` part:  
-    ```bash
-    backend/
-    ├── backend
-    │   ├── asgi.py
-    │   ├── __init__.py
-    │   ├── settings.py
-    │   ├── urls.py
-    │   └── wsgi.py
-    ├── courses
-    │   ├── admin.py
-    │   ├── apps.py
-    │   ├── fixtures
-    │   │   └── course.json
-    │   ├── __init__.py
-    │   ├── migrations
-    │   │   ├── 0001_initial.py
-    │   │   └── __init__.py
-    │   ├── models.py
-    │   ├── serializers.py
-    │   ├── tests.py
-    │   ├── urls.py
-    │   └── views.py
-    ├── db.sqlite3
-    ├── Dockerfile
-    ├── manage.py
-    └── requirements.txt
-    ```
-  - the `frontend part` part (run in the second console):
-    ```bash
-    cd frontend
-    npm install
-    npm start
-    ```
-  - a structure of the `frontend` part:  
-      ```bash
-        frontend/
-    ├── babelrc.json
-    ├── Dockerfile
-    ├── jest.config.js
-    ├── package.json
-    ├── package-lock.json
-    ├── public
-    │   ├── favicon.ico
-    │   ├── index.html
-    │   ├── logo192.png
-    │   ├── logo512.png
-    │   ├── manifest.json
-    │   └── robots.txt
-    ├── README.md
-    ├── src
-    │   ├── App.css
-    │   ├── App.js
-    │   ├── App.test.js
-    │   ├── components
-    │   │   ├── AboutComponent.js
-    │   │   ├── AddCourseComponent.js
-    │   │   ├── CourseComponent.js
-    │   │   └── CoursesListComponent.js
-    │   ├── index.css
-    │   ├── index.js
-    │   ├── reportWebVitals.js
-    │   ├── services
-    │   │   └── CourseService.js
-    │   ├── serviceWorker.js
-    │   ├── setupTests.js
-    │   └── utils
-    │       ├── HttpAxios.js
-    │       └── WithRouter.js
-    └── test
-        └── jest
-            └── __mocks__
-                └── styleMock.js
-    
-      ```
+---
 
-  - the browser should open with the url http://localhost:8081/courses with the following view:  
-  ![start](assets/start.png)
+## 📑 Table of Contents
 
-2a. Running the project (with Docker)  
-   ```bash
-    docker build
-    docker-compose up -d
-   ```
-- click the frontend link shown in the Docker's logs in the console  
-- to stop the containers use:  
-    ```bash
-    docker-compose down
-   ```
+- [🚀 Features](#-features)
+- [🏗️ Architecture](#️-architecture)
+- [🛠️ Tech Stack](#️-tech-stack)
+- [💻 Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Option 1: Manual Setup](#option-1-manual-setup)
+  - [Option 2: Docker Setup (Recommended)](#option-2-docker-setup-recommended)
+- [📂 Project Structure](#-project-structure)
+- [🧪 Testing](#-testing)
+- [💡 Usage Guide](#-usage-guide)
+- [📊 Database Schema](#-database-schema)
+- [🤝 Contributing](#-contributing)
+- [📝 License](#-license)
 
-3. Browsing and editing courses
-- navigation looks as follows:  
-![navigation](assets/navigation.png)  
-- after clicking one of the courses we can get detailed information about it:  
-![course](assets/course.png)
-- we can edit some parameters of the course after clicking `Edit course` button:  
-![course](assets/course-edition.png)  
+---
 
-4. Adding new courses
-- after clicking `Add course` link in the top left part of the page, we can add new course:    
-![new-course](assets/new-course.png)
-- after submitting the form with success, we can see the following information:    
-![course-added](assets/course-added.png)
-- the course is now visible on the list at the end of list:    
-![course-added-2](assets/course-added-2.png)
+## 🚀 Features
 
-5. About section
-- after clicking `About` link in the navigation menu, we can see some information about the project:  
-![about](assets/about.png)
+- **Course Management**: Create, Read, Update, and Delete (CRUD) courses.
+- **Search Functionality**: Quickly find courses by title.
+- **Published Status**: Filter and view courses based on their publication status.
+- **Responsive UI**: Built with React and Bootstrap for a seamless experience across devices.
+- **RESTful API**: Clean API design using Django REST Framework.
+- **Dockerized**: Easy deployment and development environment setup using Docker Compose.
 
-6. Searching through the courses
-- you can look for a given phrase in the titles of courses: 
-![search-1](assets/search-1.png)
-- after clicking `Search` button, as a result you'll get the list of courses with given phrase:  
-![search-2](assets/search-2.png)
+---
 
-7. Fixtures
-- if you'd like to manipulate some backend data, you can use fixture from `.json` file,
-- it's already created in `backend/courses/fixtures/course.json` file,
-- to create, use:  
-     ```bash
-    python manage.py dumpdata courses.Course --indent 4 > courses/fixtures/course.json
-     ```
-- if you have an empty database you can load data from fixture file with:    
-     ```bash
-    python manage.py loaddata courses/fixtures/course.json --app courses.Course 
-     ```
-  
-8. Tests  
-  - the `backend` part was tested with built-in `unittest` module:  
+## 🏗️ Architecture
+
+The project follows a decoupled client-server architecture:
+
+```mermaid
+graph LR
+    subgraph Frontend
+        React[React SPA]
+        Bootstrap[Bootstrap CSS]
+    end
+
+    subgraph Backend
+        DRF[Django REST Framework]
+        SQLite[(SQLite/PostgreSQL)]
+    end
+
+    React <-->|REST API / JSON| DRF
+    DRF <-->|ORM| SQLite
+```
+
+---
+
+## 🛠️ Tech Stack
+
+**Backend:**
+- Python 3.x
+- Django 4.2+
+- Django REST Framework
+- SQLite (Development) / PostgreSQL (Docker)
+
+**Frontend:**
+- React
+- React Router 6
+- Axios (HTTP Client)
+- Bootstrap 4
+
+**DevOps:**
+- Docker & Docker Compose
+
+---
+
+## 💻 Getting Started
+
+### Prerequisites
+- Python 3.10+
+- Node.js & npm
+- Docker (optional)
+
+### Clone the repository
+```bash
+git clone git@github.com:zacniewski/django-courses.git
+cd django-courses/
+```
+
+### Option 1: Manual Setup
+
+#### 1. Backend Setup
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+#### 2. Frontend Setup
+```bash
+cd frontend
+npm install
+npm start
+```
+The application will be available at `http://localhost:3000` (or `http://localhost:8081` depending on configuration).
+
+---
+
+### Option 2: Docker Setup (Recommended)
+
+Run the entire stack with a single command:
+```bash
+docker-compose up --build
+```
+
+- **Frontend**: `http://localhost:3000`
+- **Backend API**: `http://localhost:8000`
+- **Database**: PostgreSQL on port `5432`
+
+---
+
+## 📂 Project Structure
+
+### Backend
+```text
+backend/
+├── backend/            # Project configuration
+├── courses/            # Course application logic
+│   ├── migrations/     # Database migrations
+│   ├── fixtures/       # Sample data (course.json)
+│   ├── models.py       # Data models
+│   ├── serializers.py  # API serializers
+│   ├── views.py        # API views
+│   └── urls.py         # API routing
+└── manage.py
+```
+
+### Frontend
+```text
+frontend/
+├── src/
+│   ├── components/     # React components
+│   ├── services/       # API communication logic
+│   ├── utils/          # Helpers (Axios config)
+│   └── App.js          # Main application component
+└── public/             # Static assets
+```
+
+---
+
+## 📊 Database Schema
+
+The `Course` model consists of the following fields:
+
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `id` | BigAutoField | Primary Key |
+| `title` | CharField | Title of the course |
+| `description` | CharField | Brief summary |
+| `published` | BooleanField | Publication status |
+| `added` | DateField | Auto-generated creation date |
+
+---
+
+## 🧪 Testing
+
+### Backend Tests
+Run Django unit tests:
+```bash
+cd backend
+python manage.py test
+```
 ![backend-test](assets/backend-test.png)
 
-  - the `frontend` part was tested with React Testing Library::  
-![frontend-test](assets/frontend-test.png)  
+### Frontend Tests
+Run Jest tests:
+```bash
+cd frontend
+npm test
+```
+![frontend-test](assets/frontend-test.png)
+
+---
+
+## 💡 Usage Guide
+
+### Browsing Courses
+The main dashboard displays all available courses. Use the search bar to filter by title.
+![start](assets/start.png)
+
+### Adding a Course
+Navigate to **"Add course"** to create a new entry.
+![new-course](assets/new-course.png)
+
+### Loading Sample Data
+To populate the database with initial data:
+```bash
+cd backend
+python manage.py loaddata courses/fixtures/course.json
+```
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details on our development workflow and code style guidelines.
+
+---
+
+## 📝 License
+
+This project is licensed under the MIT License.
